@@ -9,15 +9,25 @@ import UIKit
 
 class PokemonTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var tipoView: TipoDePokemonView!
+    @IBOutlet weak var nomeLabel: UILabel!
+    @IBOutlet weak var pokemonImageView: UIImageView!
+    @IBOutlet weak var evolucoesLabel: UILabel!
+    
+    
+    func setup(_ pokemon: Pokemon){
+        nomeLabel.text = pokemon.nome
+        pokemonImageView.image = UIImage(named: pokemon.referencia)
+        tipoView.set(pokemon.tipo)
+        evolucoesLabel.text = pokemon.evolucoes?
+            .map {$0.nome}
+            .joined(separator: ", ") ?? "N/A"
+        
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    override func prepareForReuse() {
+        nomeLabel.text = nil
+        evolucoesLabel.text = nil
+        pokemonImageView.image = nil
     }
-
 }

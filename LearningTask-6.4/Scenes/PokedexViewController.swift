@@ -9,21 +9,45 @@ import UIKit
 
 class PokedexViewController: UIViewController {
 
+    var pokeStore: PokemonStore?
+    
+    @IBOutlet weak var tableview: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupTableView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupTableView(){
+        tableview.tableHeaderView = HeaderView.com(titulo: "Pokédex")
+        tableview.delegate = self
+        tableview.dataSource = self
     }
-    */
-
 }
+
+extension PokedexViewController: UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return pokeStore?.todos.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableview.dequeueReusableCell(withIdentifier: "PokemonViewCell", for: indexPath) as? PokemonTableViewCell else{
+            fatalError("Não foi possível recuperar célula para tabela")
+        }
+        let pokemon = pokeStore?.todos[indexPath.row]
+        cell.setup(pokemon!)
+        return cell
+    }
+    
+    
+    
+}
+
+extension PokedexViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+

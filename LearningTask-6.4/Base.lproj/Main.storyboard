@@ -1,23 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XZH-kJ-oGi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XZH-kJ-oGi">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Pokedex View Controller-->
         <scene sceneID="07h-Bd-yGx">
             <objects>
-                <viewController id="XZH-kJ-oGi" customClass="ViewController" customModule="LearningTask_6_4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XZH-kJ-oGi" customClass="PokedexViewController" customModule="LearningTask_6_4" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yBj-J2-yEw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Oog-7L-UhV" userLabel="Pokedex Table View">
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PokemonViewCell" id="XXP-1v-yav" userLabel="Pokemon View Cell" customClass="PokemonTableViewCell" customModule="LearningTask_6_4" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="168.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XXP-1v-yav" id="D14-L7-rHL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="168.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="ap7-yR-Xp5" userLabel="Main Stack View">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="168.5"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="x24-mJ-HRu" userLabel="Pokemon Details Stack View">
+                                                            <rect key="frame" x="20" y="24" width="230" height="120.5"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eWy-cY-IA7" userLabel="Pokemon Stack View">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="230" height="48.5"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokémon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjG-Ni-UP8" userLabel="Nome Label">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="230" height="24"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNt-Hc-QOn" userLabel="Tipo View" customClass="TipoDePokemonView" customModule="LearningTask_6_4" customModuleProvider="target">
+                                                                            <rect key="frame" x="0.0" y="32" width="230" height="16.5"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        </view>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="247" verticalHuggingPriority="247" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fr0-Po-1bF" userLabel="Evolucoes Stack View">
+                                                                    <rect key="frame" x="0.0" y="72.5" width="230" height="48"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evolui para:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MB5-8w-HlC" userLabel="Evolui para Label">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="72" height="48"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Pokémon" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m41-LX-aS1" userLabel="Evolucao Label">
+                                                                            <rect key="frame" x="76" y="0.0" width="154" height="48"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j2Q-Ej-Bzv" userLabel="Pokemon Image View">
+                                                            <rect key="frame" x="274" y="24" width="120" height="120.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="120" id="4uL-mN-KYP"/>
+                                                                <constraint firstAttribute="width" constant="120" id="JFj-om-lOp"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <directionalEdgeInsets key="directionalLayoutMargins" top="24" leading="20" bottom="24" trailing="20"/>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ap7-yR-Xp5" secondAttribute="trailing" id="HDl-6K-ss4"/>
+                                                <constraint firstAttribute="bottom" secondItem="ap7-yR-Xp5" secondAttribute="bottom" id="LQr-z5-J59"/>
+                                                <constraint firstItem="ap7-yR-Xp5" firstAttribute="top" secondItem="D14-L7-rHL" secondAttribute="top" id="r7f-3E-rVi"/>
+                                                <constraint firstItem="ap7-yR-Xp5" firstAttribute="leading" secondItem="D14-L7-rHL" secondAttribute="leading" id="vFn-JP-HRw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="evolucoesLabel" destination="m41-LX-aS1" id="obU-uq-l62"/>
+                                            <outlet property="nomeLabel" destination="AjG-Ni-UP8" id="KCD-An-I9C"/>
+                                            <outlet property="pokemonImageView" destination="j2Q-Ej-Bzv" id="Fz1-CC-Keg"/>
+                                            <outlet property="tipoView" destination="XNt-Hc-QOn" id="owI-wd-T6v"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Bqr-ms-RSM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Oog-7L-UhV" firstAttribute="top" secondItem="Bqr-ms-RSM" secondAttribute="top" id="0eJ-Ab-pU0"/>
+                            <constraint firstItem="Oog-7L-UhV" firstAttribute="leading" secondItem="Bqr-ms-RSM" secondAttribute="leading" id="Zzm-7k-eAH"/>
+                            <constraint firstItem="Bqr-ms-RSM" firstAttribute="bottom" secondItem="Oog-7L-UhV" secondAttribute="bottom" id="e4g-mx-YgA"/>
+                            <constraint firstItem="Bqr-ms-RSM" firstAttribute="trailing" secondItem="Oog-7L-UhV" secondAttribute="trailing" id="wmQ-h2-1wi"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableview" destination="Oog-7L-UhV" id="luh-OH-y57"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLT-fy-gdh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
